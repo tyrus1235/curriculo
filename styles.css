@@ -152,6 +152,10 @@
     margin-bottom: 35px;
 }
 
+.section h3 {
+    font-family: 'ubuntu';
+}
+
 .section li {
     list-style-position: inside;
     font-family: 'ubuntu';
@@ -168,6 +172,6 @@
 #skills-container {
     display: flex;
     flex-flow: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
 }

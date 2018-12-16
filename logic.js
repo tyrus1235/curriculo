@@ -14,20 +14,35 @@ var experienceURL = 'https://demo8029375.mockable.io/experience';
 var skillsURL = 'https://demo8029375.mockable.io/skills';
 
 // Se o usuário havia escolhido o Tema Escuro antes, mantenha esse tema ao recarregar a página.
-if (localStorage.getItem('theme') === 'dark') {
-    changeTheme('dark');
+try {
+    if (localStorage.getItem('theme') === 'dark') {
+        changeTheme('dark');
+    }
+}
+catch(error) {
+    console.error("localStorage não suportado!");
 }
 
 // Se o usuário clicar no botão do Tema Claro, trocar o tema para claro e armazenar a opção do usuário.
 lightTheme.addEventListener("click", function() {
     changeTheme('light');
-    localStorage.setItem('theme', 'light');
+    try {
+        localStorage.setItem('theme', 'light');
+    }
+    catch(error) {
+        console.error("localStorage não suportado!");
+    }
 });
 
 // Se o usuário clicar no botão do Tema Escuro, trocar o tema para escuro e armazenar a opção do usuário.
 darkTheme.addEventListener("click", function() {
     changeTheme('dark');
-    localStorage.setItem('theme', 'dark');
+    try {
+        localStorage.setItem('theme', 'dark');
+    }
+    catch(error) {
+        console.error("localStorage não suportado!");
+    }
 });
 
 // Requisições HTTP.
@@ -50,7 +65,7 @@ xhrExperience.onreadystatechange = function() {
         for (var i = 0; i < experience.length; i++) {
             var expDiv = document.createElement('div');
             expDiv.innerHTML = `<h3 class="company-title">${experience[i].company}</h3>
-            <p><strong>Duração:</strong> ${experience[i].startedAt} até ${experience[i].endedAt}</p>
+            <p><strong>Dura&#231;&#227;o:</strong> ${experience[i].startedAt} at&#233; ${experience[i].endedAt}</p>
             <p><strong>Cargos:</strong> ${experience[i].roles}</p>
             <p><strong>Atividades:</strong></p>`;
 
@@ -88,7 +103,7 @@ xhrSkills.onreadystatechange = function() {
 
             if (!skillsDivs[skills[i].level]) {
                 skillsDivs[skills[i].level] = document.createElement('div');
-                skillsDivs[skills[i].level].innerHTML = `<h3>Nível ${skills[i].level}</h3>`;
+                skillsDivs[skills[i].level].innerHTML = `<h3>N&#237;vel ${skills[i].level}</h3>`;
 
                 skillsContainer.appendChild(skillsDivs[skills[i].level]);
             }
